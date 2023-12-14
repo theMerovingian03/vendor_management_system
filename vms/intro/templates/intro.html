@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>API Documentation</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Welcome to Vendor Management System</h2>
+            <h2>API Documentation</h2>
+            <p>Below is a list of supported APIs and their usage:</p>
+            <p>Scroll down to find information regarding the database models.</p>
+            {% for api in api_info %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ api.api_method }} {{ api.api_title }}</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Description: {{ api.api_desc }}</p>
+                    <p>Usage:</p>
+                    <div class="mark">
+                        <code style="color: black;">
+                            <li>URL: {{ api.api_url }}</li>
+                            <li>Method: {{ api.api_method }}</li>
+                            <li>Additional Parameters: {{ api.api_params }}</li>
+                        </code>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="container">
+        <h2>Database Models:</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Vendor</h3>
+            </div>
+            <div class="panel-body">
+                <li>name: CharField - Vendor's name.</li>
+                <li>contact_details: TextField - Contact information of the vendor.</li>
+                <li>address: TextField - Physical address of the vendor.</li>
+                <li>vendor_code: CharField - A unique identifier for the vendor.
+                <li>on_time_delivery_rate: FloatField - Tracks the percentage of on-time deliveries.</li>
+                <li>quality_rating_avg: FloatField - Average rating of quality based on purchase.
+                    orders
+                </li>
+                <li>average_response_time: FloatField - Average time taken to acknowledge
+                    purchase orders
+                </li>
+                <li>fulfillment_rate: FloatField - Percentage of purchase orders fulfilled successfully</li>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">PurchaseOrder</h3>
+            </div>
+            <div class="panel-body">
+                <li>po_number: CharField - Unique number identifying the PO.</li>
+                <li>vendor: ForeignKey - Link to the Vendor model.</li>
+                <li>order_date: DateTimeField - Date when the order was placed.</li>
+                <li>delivery_date: DateTimeField - Expected or actual delivery date of the order
+                <li>items: JSONField - Details of items ordered.</li>
+                <li>quantity: IntegerField - Total quantity of items in the PO.</li>
+                <li>status: CharField - Current status of the PO (e.g., pending, completed, canceled)</li>
+                <li>quality_rating: FloatField - Rating given to the vendor for this PO (nullable).</li>
+                <li>issue_date: DateTimeField - Timestamp when the PO was issued to the vendor.</li>
+                <li>acknowledgment_date: DateTimeField, nullable - Timestamp when the vendor acknowledged the PO
+                </li>
+            </div>
+        </div>
+        <br>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </body>
+    <footer style="text-align: center;">
+        <h4 style="font-size: 14px;">Created by: Rushikesh Borade</h4>
+        <h4 style="font-size: 14px;">+91 70382-35686, rishipb19@gmail.com</h4>
+    </footer>
+</html>
