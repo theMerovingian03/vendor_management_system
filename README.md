@@ -1,4 +1,4 @@
-## Vendor Management System (On going)
+## Vendor Management System
 A collection of REST APIs built using the Django Rest Framework to aid in management of Vendor profiles, purchase orders and calculate various performance metrics for each vendor.
 
 ### To run:
